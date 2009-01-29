@@ -1,0 +1,2 @@
+# make sure you have the right chmod (755):
+complete -C ~/rake-completion.rb -o default rake
