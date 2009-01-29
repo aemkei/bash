@@ -1,0 +1,11 @@
+# this will give you a colered bash:
+# username: folder [banch*] $ 
+
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)]/"
+}
+
+PS1='\[\e[0;36m\]\h: \e[0;32m\]\W\e[0;35m\]$(parse_git_branch)\[\e[m\] $ '
