@@ -1,0 +1,21 @@
+###########
+# GENERAL #
+###########
+alias home='cd ~'
+alias l='ls -lah'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias docs='cd Documents/'
+
+
+################################
+# GENERAL (but specific to me) #
+################################
+alias e='mate . &'
+alias et='mate README app/ config/ db/ lib/ public/ test/ vendor/plugins &'
+
+
+#########
+# RAILS #
+#########
+alias ss='ruby script/server'
