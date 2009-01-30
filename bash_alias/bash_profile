@@ -18,4 +18,12 @@ alias et='mate README app/ config/ db/ lib/ public/ test/ vendor/plugins &'
 #########
 # RAILS #
 #########
-alias ss='ruby script/server'
+alias ss='ruby script/server' #start ruby server for the project
+
+
+###########
+# git svn #
+###########
+
+alias scommit='git stash && git svn dcommit && git stash pop' #commit to svn
+alias srebase='git stash && git svn rebase && git stash pop' #rebase svn
