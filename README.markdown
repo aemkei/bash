@@ -1,6 +1,6 @@
 This is a collection of my bash exension.
 
-# Usage
+## Usage
 
 Edit your `.bash_profile` using favourite browser:
 
