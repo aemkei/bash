@@ -1,4 +1,4 @@
-# this will give you a colered bash:
+# this will give you a colored bash:
 # username: folder [banch*] $ 
 
 function parse_git_dirty {
