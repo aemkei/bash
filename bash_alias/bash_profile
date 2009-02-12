@@ -25,5 +25,22 @@ alias ss='ruby script/server' #start ruby server for the project
 # git svn #
 ###########
 
-alias scommit='git stash && git svn dcommit && git stash pop' #commit to svn
-alias srebase='git stash && git svn rebase && git stash pop' #rebase svn
+function git_rebase {
+# only stash if working directory not clean
+if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]]; then
+  git stash && git svn rebase && git stash pop #rebase svn
+else
+  git svn rebase #rebase svn
+fi
+}
+alias srebase=git_rebase
+
+function git_commit {
+# only stash if working directory not clean
+if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]]; then
+  git stash && git svn dcommit && git stash pop #commit to svn
+else
+  git svn dcommit #commit to svn
+fi
+}
+alias scommit=git_commit
