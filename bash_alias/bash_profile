@@ -1,46 +1,50 @@
+
+# mate is my choice
+EDITOR='mate -w'
+
 ###########
 # GENERAL #
 ###########
 alias home='cd ~'
-alias l='ls -lah'
+alias ll='ls -lahG'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias docs='cd Documents/'
+alias docs='cd /Users/aemkei/Documents/'
+alias st='git status'
+alias ip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\   -f2"
+alias migrate="rake db:migrate"
+alias rebuild="rake db:rebuild"
+alias pull="git pull"
+alias push="git push"
+alias rebase="git pull --rebase"
+alias log='git log --pretty=format:"%Cgreen%ad%Creset: %s%d" --date=local --author=Martin --since="1 weeks ago" --no-merges'
 
+################
+# LS SETTINGS #
+################
+
+export LSCOLORS='fxfxcxdxbxegedabagacad'
+
+################
+# ACK SETTINGS #
+################
+
+export ACK_COLOR_MATCH='green bold'
+export ACK_COLOR_FILENAME='magenta underline bold'
 
 ################################
 # GENERAL (but specific to me) #
 ################################
+
 alias e='mate . &'
 alias et='mate README app/ config/ db/ lib/ public/ test/ vendor/plugins &'
 
+###################
+# WEB DEVELOPMENT #
+###################
 
-#########
-# RAILS #
-#########
 alias ss='ruby script/server' #start ruby server for the project
+alias deploy='cap deploy'
 
-
-###########
-# git svn #
-###########
-
-function git_rebase {
-# only stash if working directory not clean
-if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]]; then
-  git stash && git svn rebase && git stash pop #rebase svn
-else
-  git svn rebase #rebase svn
-fi
-}
-alias srebase=git_rebase
-
-function git_commit {
-# only stash if working directory not clean
-if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]]; then
-  git stash && git svn dcommit && git stash pop #commit to svn
-else
-  git svn dcommit #commit to svn
-fi
-}
-alias scommit=git_commit
+# start a simple server at port 8000 pointing to current directory
+alias server="open http://localhost:8000/; python -m SimpleHTTPServer &"
